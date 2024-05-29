@@ -36,6 +36,8 @@ sources:
           - name: PROMO_ID
           - name: ESTIMATED_DELIVERY_AT
           - name: ORDER_COST
+            tests:
+              - positive_values
           - name: USER_ID 
           - name: ORDER_TOTAL   
           - name: DELIVERED_AT
