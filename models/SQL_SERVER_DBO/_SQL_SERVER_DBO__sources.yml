@@ -45,3 +45,16 @@ sources:
           - name: STATUS
           - name: _FIVETRAN_DELETED
           - name: _FIVETRAN_SYNCED
+      - name : events
+        loaded_at_field: _fivetran_synced
+        columns:
+          - name: event_id
+          - name: page_url
+          - name: event_type
+          - name: USER_ID
+          - name: product_id
+          - name: session_id
+          - name: CREATED_AT
+          - name: order_id
+          - name: _fivetran_deleted
+          - name: _fivetran_synced 
