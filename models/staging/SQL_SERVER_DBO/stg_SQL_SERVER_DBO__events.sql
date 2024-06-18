@@ -16,10 +16,14 @@ renamed_casted AS (
        , page_url
        , event_type
        , USER_ID
-       , product_id
+       ,case 
+            when  product_id=' 'then md5('product_empty')
+            else product_id
        , session_id
        , CREATED_AT
-       , order_id
+       , case 
+             when order_id =' 'then md5('order_empty')
+             else order_id
        , _fivetran_deleted
        , _fivetran_synced AS date_load
     FROM src_events
