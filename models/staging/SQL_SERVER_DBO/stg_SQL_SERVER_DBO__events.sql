@@ -17,13 +17,15 @@ renamed_casted AS (
        , event_type
        , USER_ID
        ,case 
-            when  product_id=' 'then md5('product_empty')
+            when  product_id=''then md5('product_empty')
             else product_id
+        end as product_id    
        , session_id
        , CREATED_AT
        , case 
-             when order_id =' 'then md5('order_empty')
+             when order_id =''then md5('order_empty')
              else order_id
+        end as order_id
        , _fivetran_deleted
        , _fivetran_synced AS date_load
     FROM src_events
