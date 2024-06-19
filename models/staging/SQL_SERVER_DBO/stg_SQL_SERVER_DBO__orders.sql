@@ -13,16 +13,16 @@ WITH src_orders AS (
 renamed_casted AS (
     SELECT
         order_id,
-         IFF (SHIPPING_SERVICE = ' ',md5('without_shipping_service'),md5(SHIPPING_SERVICE)) as shipping_service_id,
-         SHIPPING_COST,
+         IFF (SHIPPING_SERVICE = '',md5('without_shipping_service'),md5(SHIPPING_SERVICE)) as shipping_service_id,
+         SHIPPING_COST as shipping_cost_dollar,
          ADDRESS_ID,
          --CREAted_at,
          convert_timezone('UTC',to_timestamp_tz(created_at))  as created_at_utc ,
          iff(PROMO_ID = ' ',md5('without_promo'),md5(promo_id))as promo_id ,
          ESTIMATED_DELIVERY_AT,
-         ORDER_COST,
+         ORDER_COST as order_cost_dollar,
          USER_ID ,
-         ORDER_TOTAL,   
+         ORDER_TOTAL as order_total_dollar,   
          DELIVERED_AT,
          --iff (TRACKING_ID = ' ',NULL,tracking_id)as tracking_id,
           case when tracking_id=' ' then NULL

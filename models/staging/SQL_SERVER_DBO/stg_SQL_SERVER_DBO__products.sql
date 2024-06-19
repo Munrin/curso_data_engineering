@@ -13,11 +13,20 @@ WITH src_products AS (
 renamed_casted AS (
     SELECT
         product_id
-        , price
+        , price as price_dollar
         , name
         , inventory
         ,  _fivetran_deleted  
         , _fivetran_synced AS date_load
-    FROM src_products   )
+    FROM src_products   
+    union all
+    select 
+        md5('product_empty'),
+        0,
+        'product_empty',
+        0,
+        null,
+        null
+)
 
 SELECT * FROM renamed_casted
